@@ -1,5 +1,5 @@
 import React from 'react'
-import {Link} from '../Routing/Routing'
+import {Link} from '../common/Routing'
 import {FlatList,View, Text, StyleSheet } from 'react-native'
 
 const Header = () => (

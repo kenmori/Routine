@@ -1,5 +1,5 @@
 import React from 'react'
-import { Router, Switch, Route, Link } from '../Routing/Routing'
+import { Router, Switch, Route, Link } from '../common/Routing'
 import { View, Text, StyleSheet } from 'react-native'
 
 const About = () => (

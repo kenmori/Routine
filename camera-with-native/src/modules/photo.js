@@ -1,61 +1,56 @@
-const POST = 'photo/POST';
-const SELECT = 'photo/SELECT';
-export const REQUEST = 'photo/REQUEST';
-export const SUCCESS = 'photo/SUCCESS';
-export const FAILUER = 'photo/FAILUER';
+const POST = "photo/POST";
+const SELECT = "photo/SELECT";
+export const REQUEST = "photo/REQUEST";
+export const SUCCESS = "photo/SUCCESS";
+export const FAILUER = "photo/FAILUER";
 
-export const post = (payload) => {
+export const post = () => {
   return {
-    payload,
     type: POST
-  }
-}
+  };
+};
 
-export const request = (payload) => {
+export const request = payload => {
   return {
     payload,
     type: REQUEST
-  }
-}
+  };
+};
 
-export const select = (payload) => {
+export const select = payload => {
+  console.log("select", payload);
   return {
     payload,
     type: SELECT
-  }
-}
+  };
+};
 
 const initialState = {
   entities: [],
   thum: [],
-  selectedFiles: [{}],
-  error: {}
-}
+  selectedFiles: [],
+  error: {},
+  status: ""
+};
 
 export const photo = (state = initialState, action) => {
-  switch (action.type){
-    case POST:
-      return {
-        ...state,
-        entities: state.entities
-      }
+  switch (action.type) {
     case SELECT:
       return {
         ...state,
-        thum: action.payload
-      }
+        selectedFiles: [...state.selectedFiles, action.payload]
+      };
     case SUCCESS:
       return {
         ...state,
-        entities: action.payload
-      }
+        status: action.payload
+      };
     case FAILUER:
       return {
         ...state,
         error: action.payload
-      }
+      };
     default:
-      return state
+      return state;
   }
-}
-
+};

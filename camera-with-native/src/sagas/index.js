@@ -1,51 +1,60 @@
-import {select, all, take, fork, call, put } from 'redux-saga/effects'
+import { select, all, take, fork, call, put } from "redux-saga/effects";
 const Api = {
-  get(action){
-    fetch('http://localhost:3004/photos', {
-    }).then((res)=>{
-      return res.json()
-    }).then((myjson)=>{
-      console.log(myjson)
-    })
+  get(action) {
+    console.log();
+    fetch("http://localhost:3000/photos/", {})
+      .then(res => {
+        return res.json();
+      })
+      .then(myjson => {
+        console.log(myjson);
+      });
   },
-  post(action){
-    fetch('http://localhost:3004/photos', {
+  post(action) {
+    console.log("post", action);
+    const formData = new FormData(action);
+    fetch("http://localhost:3000/photos/", {
       method: "POST",
-      data: action
-    }).then((res)=>{
-      return res.json()
-    }).then((myjson)=>{
-      console.log(myjson)
+      body: formData
     })
+      .then(res => {
+        console.log("res", res);
+        return res.json();
+      })
+      .then(myjson => {
+        console.log("then", myjson);
+      });
   }
-}
+};
 
-function* fetchPhoto(action){
+function* fetchPhoto(action) {
   try {
-    yield put({type: "photo/SUCCESS", entities: action.payload})
-  } catch(e){
-    yield put({type: "pohto/FAILUER", error: e.message})
+    yield put({ type: "photo/SUCCESS", status: action.payload });
+  } catch (e) {
+    yield put({ type: "pohto/FAILUER", status: e.message });
   }
 }
 
-export const getPhoto = state => console.log(state) ||  state.photo
-function* postPhoto(action){
-  while (true){
+export const getPhoto = state => state.photo.selectedFiles;
+function* postPhoto(action) {
+  while (true) {
     const action = yield take("photo/POST");
-    const state = yield select(getPhoto);
-    const formData = new FormData()
-    formData.append('myFile', state.selectedFiles[0], "filenamehere");
+    const selectedFiles = yield select(getPhoto);
+    console.log("selectedFiles", selectedFiles);
+    const formData = new FormData();
+    formData.append("myFile", selectedFiles[0], "filenamehere");
+    console.log(formData);
     try {
-      const photo = yield call(Api.post, formData)
-      yield put({type: "photo/SUCCESS", entities: photo})
-    } catch(e){
-      yield put({type: "pohto/FAILUER", error: e.message})
+      const photo = yield call(Api.post, formData);
+      yield put({ type: "photo/SUCCESS", entities: photo });
+    } catch (e) {
+      yield put({ type: "pohto/FAILUER", error: e.message });
     }
   }
 }
 
-function* rootSaga(){
-  yield all([fork(fetchPhoto), fork(postPhoto)])
+function* rootSaga() {
+  yield all([fork(fetchPhoto), fork(postPhoto)]);
 }
 
 export default rootSaga;

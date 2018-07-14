@@ -4,6 +4,7 @@ import { Provider } from "react-redux";
 import Counter from "./container/Counter";
 import PhotoContainer from "./container/Photo";
 import { createStore, applyMiddleware } from "redux";
+import { composeWithDevTools } from "redux-devtools-extension";
 import createSagaMiddleware from "redux-saga";
 import rootSaga from "./sagas";
 import { Router, Switch, Route, Link } from "./common/Routing";
@@ -12,7 +13,11 @@ import { About } from "./components/About";
 import reducer from "./modules";
 
 const sagaMiddleware = createSagaMiddleware();
-const store = createStore(reducer, {}, applyMiddleware(sagaMiddleware));
+const store = createStore(
+  reducer,
+  {},
+  composeWithDevTools(applyMiddleware(sagaMiddleware))
+);
 sagaMiddleware.run(rootSaga);
 
 export default class App extends Component {

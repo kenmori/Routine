@@ -25,6 +25,7 @@ react-nativeを動かすためのpackage(互換性のあるバージョンで指
 #### .babelrcを追加
 
 #### .watchmanconfigを追加
+コードからシュミレータへの即時反映を提供している
 
 #### .flowconfigを追加
 
@@ -246,6 +247,12 @@ plat.web.js
 export する名前を同じにすること
 ```
 
+### RNWとは
+RNのコンポーネントやAPIをreact-dom上で使えるようにしたもの
+・UIのクオリティーをあげている(実行速度、UIの操作性mouse, keyboad, tap)、ベンダープレフィクスなどのstyleを最適化、Devツールの統一
+・一度書けばどこでもrenderできる
+
+
 
 
 ##TODO 最初から説明している
@@ -311,22 +318,6 @@ cd TestNative
 
 react-native run-android
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ####  create-react-native-appから作る方法
 
 
@@ -334,7 +325,11 @@ react-native run-android
 質問100
 
 
-# native
+# RN はそもそもなに
+ios androidに対してのswift、javaの記述を一つの言語、JSで抽象化、それぞれのプラットフォームで共通で使えるようにしたフレームワーク
+
+
+
 ### 作り方は？
 
 ### CRNAとCRAにおけるfor-webの扱いの違い
@@ -389,19 +384,57 @@ npm が自動でios, Androidのプロジェクトに対しての変更を自動�
 
 ### 巷での噂は？
 ### アーキテクチャの違いは？
+
 ### リリースまでの準備は？
 ### 参照した記事は？
 
+### forWebは独自で書いて、アプリはRNを使う
+例えば[Buttonコンポーネント](https://facebook.github.io/react-native/docs/button.html)
+を使いたい場合、必須propsと、plattformの項目をみて使えるアプリを確かめる
+
 # expoについて
 ### expoとは
-### 何が嬉しい
-### トレードオフ
+reactNativeの開発・ビルドを支援してくれるツール
+オンラインやアプリで使用できる
+・変更したコードをすぐに反映させてくれる
+・環境構築をせず実機確認できる
+・カメラなどのネイティブ機能を抽象的にしてexpoが提供してくれる(後述)
+・xcodeやAndroidStudioなどでビルドしないでいい
+
+### 具体的にexpoがnativeモジュールを抽象化して提供しているもの
+[https://docs.expo.io/versions/v28.0.0/sdk/](https://docs.expo.io/versions/v28.0.0/sdk/)
+RNとexpoのsdkのバージョンを合わせる必要がある
+
+### ExpoSDKとは
+ExpoAppはExpoSDKを含んだRNAppのことで、
+ExpoSDKはデバイスのシステム(カメラやローカルストレージ、その他のハードウェア)への参照を提供しているNaitiveなJSライブラリだ。
+このことはnativeコードを書くことやXcodeやAndroidStudioを使わないことを意味する
+またExpoSDKを含む全てのnativeな環境で実行できるのでピュアなJSプロジェクトをポータビリティにさせることを意味している
+
+ExpoもまたUIComponentを提供している
+
+
+### expoを使うことで失うこと
+・外部ライブラリが使えない。
+・独自の実装をしたい時にネイティブコードが書けない(ejectのようにして管理から外れる必要がある)
+
+### 使い方
 
 
 
+### 開発する際に使うと良さそうなライブラリ
 
+[react-native-elements](https://github.com/react-native-training/react-native-elements)
+[ReactNativeExpress](http://www.reactnativeexpress.com/)
 
+### mac上でAndroidのシュミレータ環境構築
+[https://bagelee.com/programming/react-native/react-native-1/](https://bagelee.com/programming/react-native/react-native-1/)
 
+```
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+```
 
 
 
@@ -409,13 +442,25 @@ npm が自動でios, Androidのプロジェクトに対しての変更を自動�
 
 
 `
-    参照: https://qiita.com/nacam403/items/2c4a055132c89c3e63fb
+参照: https://qiita.com/nacam403/items/2c4a055132c89c3e63fb
+
+
+### 開発方法
+
+yarn start i でiOS シュミレータが動く
+
+
+### camera
+
+web: [https://www.npmjs.com/package/react-webcam](https://www.npmjs.com/package/react-webcam)
+native: [https://blog.pusher.com/getting-started-react-native-part-3/](https://blog.pusher.com/getting-started-react-native-part-3/)
 
 [](https://qiita.com/Nkzn/items/8e31efe0ebafa8038bde)
 
 
 
-
+### debug
+https://github.com/jhen0409/react-native-debugger
 
 
 

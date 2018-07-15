@@ -5,7 +5,7 @@ import Dropzone from "react-dropzone";
 const Photo = ({ photos, selectPhoto, postPhoto, pickImageForNative }) => (
   <View>
     <Text style={styles.appIntro}>Photo</Text>
-    <Text>{Platform.OS === "ios" && "ioss here"}</Text>
+    <Text>{Platform.OS === "ios" && "ioss here dayo"}</Text>
     <Link to="/">
       <Text>TOPへ</Text>
     </Link>

@@ -6,7 +6,7 @@ import PhotoContainer from "./container/Photo";
 import { createStore, applyMiddleware } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 import createSagaMiddleware from "redux-saga";
-import rootSaga from "./sagas";
+import rootSaga from "./sagas/index";
 import { Router, Switch, Route, Link } from "./common/Routing";
 import { View, Text, StyleSheet } from "react-native";
 import { About } from "./components/About";

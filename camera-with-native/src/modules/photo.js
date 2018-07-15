@@ -1,7 +1,8 @@
 const POST = "photo/POST";
 const SELECT = "photo/SELECT";
 export const REQUEST = "photo/REQUEST";
-export const SUCCESS = "photo/SUCCESS";
+export const SUCCESS_POST = "photo/SUCCESS_POST";
+export const SUCCESS_GET = "photo/SUCCESS_GET";
 export const FAILUER = "photo/FAILUER";
 
 export const post = () => {
@@ -10,7 +11,24 @@ export const post = () => {
   };
 };
 
-export const request = payload => {
+export const successGet = payload => {
+  return {
+    payload,
+    type: SUCCESS_GET
+  };
+};
+
+export const successPost = () => {
+  return {
+    type: SUCCESS_Post
+  };
+};
+export const failuer = () => {
+  return {
+    type: FAILUER
+  };
+};
+export const get = payload => {
   return {
     payload,
     type: REQUEST
@@ -18,7 +36,6 @@ export const request = payload => {
 };
 
 export const select = payload => {
-  console.log("select", payload);
   return {
     payload,
     type: SELECT
@@ -27,7 +44,6 @@ export const select = payload => {
 
 const initialState = {
   entities: [],
-  thum: [],
   selectedFiles: [],
   error: {},
   status: ""
@@ -40,10 +56,15 @@ export const photo = (state = initialState, action) => {
         ...state,
         selectedFiles: [...state.selectedFiles, action.payload]
       };
-    case SUCCESS:
+    case SUCCESS_POST:
       return {
         ...state,
         status: action.payload
+      };
+    case SUCCESS_GET:
+      return {
+        ...state,
+        entities: action.payload
       };
     case FAILUER:
       return {

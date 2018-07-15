@@ -463,5 +463,10 @@ native: [https://blog.pusher.com/getting-started-react-native-part-3/](https://b
 https://github.com/jhen0409/react-native-debugger
 
 
+### camera機能のカスタマイズをするにあたりAppStoreに送る際
+metaデータの追加が必要
+https://docs.expo.io/versions/latest/sdk/permissions#expopermissionscamera_roll
 
+ガイドライン
+https://docs.expo.io/versions/latest/guides/app-stores.html#system-permissions-dialogs-on-ios
 

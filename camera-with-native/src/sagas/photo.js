@@ -3,11 +3,12 @@ import { get, post } from "../utils/api";
 import { REQUEST, successGet, failuer } from "../modules/photo";
 export const selectorPhotoState = state => state.photo.selectedFiles;
 
-function* getPhoto() {
+export function* getPhoto() {
   while (true) {
     const faf = yield take(REQUEST);
     const [status, data, error] = yield call(get, "images/");
     if (data && !error) {
+      console.log("data--------", data);
       yield put(successGet(data));
     } else {
       yield put(failur(error));
@@ -15,7 +16,7 @@ function* getPhoto() {
   }
 }
 
-function* postPhoto(action) {
+export function* postPhoto(action) {
   while (true) {
     yield take("photo/POST");
     const selectedFiles = yield select(selectorPhotoState);
@@ -32,6 +33,5 @@ function* postPhoto(action) {
 }
 
 export default function* rootSaga() {
-  yield fork(getPhoto);
-  yield fork(postPhoto);
+  yield all(fork(getPhoto), fork(postPhoto));
 }

@@ -1,3 +1,95 @@
+# this projct is reference
+[Write once, run anywhere with Create React(Native) App and react-native-web @Yannick Spark](https://sparkyspace.com/write-once-run-anywhere-with-create-react-native-app-and-react-native-web/)
+
+
+# node 8.11.1 npm 5.6
+# react-create-app hybrid-app && cd hybrid-app
+任意の名前のプロジェクトの生成。カレントをプロジェクトに
+
+# 必要なmoduleをyarnで追加
+・babel-plugin-transform-object-rest-spread
+・babel-plugin-transform-react-jsx-source
+・babel-preset-expo
+・jest-expo
+・flow-bin(flow実行コマンド群)
+・react-native-scripts(Webからnativeのコードを実行するためのmodule)
+・react-test-renderer@16.2.0 (jestのスナップショット機能)
+
+react-nativeを動かすためのpackage(互換性のあるバージョンで指定している。バージョンをあげる際は慎重に)
+・expo@^25.0.0 react-native@0.52.0 react-native-web
+
+# .babelrcを追加
+
+# .watchmanconfigを追加
+
+# .flowconfigを追加
+
+# app.jsonを追加
+
+# プロジェクト直下にApp.test.jsを追加(ReactNativeのエントリーポイントテスト。名前は変えないこと)
+
+# プロジェクト直下にApp.jsを追加(ReactNativeのエントリーポイント。名前は変えないこと)
+
+# package.jsonにnativeを実行するためのコマンドを追加
+
+・mainの記述変更
+mainはnativeのentryポイントを渡す
+
+```js
+//react-native-scripts/src/bin/crna-entry.js
+
+import Expo from 'expo';
+import App from '../../../../App';
+import React, { Component } from 'react';
+import { View } from 'react-native';
+
+if (process.env.NODE_ENV === 'development') {
+  Expo.KeepAwake.activate();
+}
+Expo.registerRootComponent(App);//Expoに対してmainコンポーネントを設定している
+```
+Expoに対してAppをroot登録している(native側のエントリーポイントの名前を変えない理由)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>

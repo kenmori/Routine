@@ -2,15 +2,38 @@
   "name": "hybrid-app",
   "version": "0.1.0",
   "private": true,
+  "main": "./node_modules/react-native-scripts/build/bin/crna-entry.js",
   "dependencies": {
+    "expo": "^25.0.0",
     "react": "^16.4.0",
+    "react-art": "^16.4.0",
     "react-dom": "^16.4.0",
+    "react-native": "0.52.0",
+    "react-native-web": "^0.7.3",
     "react-scripts": "1.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "start-web": "react-scripts start",
+    "build-web": "react-scripts build",
+    "test-web": "react-scripts test --env=jsdom",
+    "eject-web": "react-scripts eject",
+    "start-native": "react-native-scripts start",
+    "eject-native": "react-native-scripts eject",
+    "android": "react-native-scripts android",
+    "ios": "react-native-scripts ios",
+    "test-native": "node node_modules/jest/bin/jest.js --watch",
+    "test": "npm run test-web && npm run test-native"
+  },
+  "jest": {
+    "preset": "jest-expo"
+  },
+  "devDependencies": {
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-plugin-transform-react-jsx-source": "^6.22.0",
+    "babel-preset-expo": "^4.0.0",
+    "flow-bin": "^0.73.0",
+    "jest-expo": "^27.0.1",
+    "react-native-scripts": "^1.14.0",
+    "react-test-renderer": "16.2.0"
   }
 }

@@ -22,7 +22,7 @@ export default class App extends Component {
         <Router>
           <View style={styles.app}>
             <View style={styles.appHeader}>
-              <Text style={styles.appTitle}>Welcome to Reactfaf</Text>
+              <Text style={styles.appTitle}>Welcome to React</Text>
             </View>
             <Text>SPA Link</Text>
             <Link to="/about">

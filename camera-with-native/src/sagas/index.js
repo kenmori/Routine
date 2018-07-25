@@ -20,7 +20,7 @@ function* postPhoto(action) {
     yield take("photo/POST");
     const selectedFiles = yield select(selectorPhotoState);
     const formData = new FormData();
-    formData.append("myFile", selectedFiles[0], "filenamehere");
+    formData.append("myFile", selectedFiles, "filenamehere");
     try {
       const fetchResult = yield call(post, formData);
       //dataの状態に寄って下記を分岐する

@@ -24,7 +24,6 @@ const mapDispatchToProps = dispatch => {
       dispatch(post());
     },
     selectPhoto(e) {
-      console.log("fire", e.target.files[0]);
       dispatch(select(e.target.files[0]));
     },
     requestPhoto() {

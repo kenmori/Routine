@@ -1,16 +1,24 @@
+//web
 import React, { Component } from 'react'
+import { Router, Switch, Route, Link } from './Routing/Routing'
 import { View, Text, StyleSheet } from 'react-native'
+import {About} from './components/About'
+
 export default class App extends Component {
   render() {
     return (
-      <View style={styles.app}>
-        <View style={styles.appHeader}>
-          <Text style={styles.appTitle}>Welcome to React ⚛️</Text>
+      <Router>
+        <View style={styles.app}>
+          <View style={styles.appHeader}>
+             <Text style={styles.appTitle}>Welcome to Reactfaf</Text>
+          </View>
+          <Text>SPA Link</Text>
+          <Link to="/about"><Text>About</Text></Link>
+            <Switch>
+             <Route path="/about" underlayColor='#f0f4f7' component={About} />
+           </Switch>
         </View>
-        <Text style={styles.appIntro}>
-          To get started, edit src/App.js and save to reload.
-        </Text>
-      </View>
+      </Router>
     )
   }
 }

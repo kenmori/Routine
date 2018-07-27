@@ -1,12 +1,19 @@
 //web
 import React, { Component } from 'react'
+import {Provider} from 'react-redux'
+import Counter from './container/Counter'
+import {createStore} from 'redux'
 import { Router, Switch, Route, Link } from './Routing/Routing'
 import { View, Text, StyleSheet } from 'react-native'
 import {About} from './components/About'
+import reducer from './modules'
+
+const store = createStore(reducer);
 
 export default class App extends Component {
   render() {
     return (
+      <Provider store={store}>
       <Router>
         <View style={styles.app}>
           <View style={styles.appHeader}>
@@ -14,11 +21,14 @@ export default class App extends Component {
           </View>
           <Text>SPA Link</Text>
           <Link to="/about"><Text>About</Text></Link>
+          <Link to="/counter"><Text>Counter</Text></Link>
             <Switch>
              <Route path="/about" underlayColor='#f0f4f7' component={About} />
+             <Route path="/counter" underlayColor='#f0f4f7' component={Counter} />
            </Switch>
         </View>
       </Router>
+    </Provider>
     )
   }
 }

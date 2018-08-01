@@ -2,13 +2,18 @@
 import React, { Component } from 'react'
 import {Provider} from 'react-redux'
 import Counter from './container/Counter'
-import {createStore} from 'redux'
+import PhotoContainer from './container/Photo'
+import {createStore, applyMiddleware} from 'redux'
+import createSagaMiddleware from 'redux-saga'
+import rootSaga from './sagas';
 import { Router, Switch, Route, Link } from './common/Routing'
 import { View, Text, StyleSheet } from 'react-native'
 import {About} from './components/About'
 import reducer from './modules'
 
-const store = createStore(reducer);
+const sagaMiddleware = createSagaMiddleware();
+const store = createStore(reducer, {}, applyMiddleware(sagaMiddleware));
+sagaMiddleware.run(rootSaga)
 
 export default class App extends Component {
   render() {
@@ -22,9 +27,11 @@ export default class App extends Component {
           <Text>SPA Link</Text>
           <Link to="/about"><Text>About</Text></Link>
           <Link to="/counter"><Text>Counter</Text></Link>
+          <Link to="/photo"><Text>Photo</Text></Link>
             <Switch>
              <Route path="/about" underlayColor='#f0f4f7' component={About} />
              <Route path="/counter" underlayColor='#f0f4f7' component={Counter} />
+             <Route path="/photo" underlayColor='#f0f4f7' component={PhotoContainer} />
            </Switch>
         </View>
       </Router>
@@ -32,6 +39,8 @@ export default class App extends Component {
     )
   }
 }
+
+
 const styles = StyleSheet.create({
   app: {
     flex: 1

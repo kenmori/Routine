@@ -1,0 +1,37 @@
+{
+  "photos": [
+    {
+      "id": 1
+    },
+    {
+      "id": 2
+    },
+    {
+      "id": 3
+    },
+    {
+      "id": 4
+    },
+    {
+      "id": 5
+    }
+  ],
+  "images": [
+    {
+      "id": 1,
+      "src": "https://data.ffaf.jpg",
+      "title": "写真1",
+      "alt": "写真1",
+      "release_at": "2018/0714",
+      "text": "東京駅で撮った写真"
+    },
+    {
+      "id": 2,
+      "src": "https://data.ffaf2.jpg",
+      "title": "写真2",
+      "alt": "写真2",
+      "release_at": "2018/0715",
+      "text": "横浜で撮った写真"
+    }
+  ]
+}

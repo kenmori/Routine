@@ -1,5 +1,6 @@
 import React from "react";
 import { Router, Switch, Route, Link } from "../common/Routing";
+import { UploadButton } from "../common/Button";
 import { Image, Platform, View, Text, StyleSheet, Button } from "react-native";
 import Dropzone from "react-dropzone";
 const Photo = ({ photos, selectPhoto, postPhoto, pickImageForNative }) => (
@@ -22,10 +23,11 @@ const Photo = ({ photos, selectPhoto, postPhoto, pickImageForNative }) => (
         ))}
     </View>
     <Button
+      color="#2196f3"
       onPress={() => pickImageForNative()}
       title="Pick on image from camera roll"
     />
-    <Button onPress={() => postPhoto()} title="upload" />
+    <UploadButton postPhoto={postPhoto} />
   </View>
 );
 
@@ -33,6 +35,9 @@ const styles = StyleSheet.create({
   appIntro: {
     color: "red",
     fontSize: 30
+  },
+  red: {
+    color: "red"
   }
 });
 export { Photo };

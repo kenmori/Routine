@@ -61,9 +61,11 @@ const mapDispatchToProps = dispatch => {
         allowsEditing: true, //pickした際にEditするUIを見せるかどうか
         aspect: [4, 3]
       });
-      if (!result.cancelled) {
-        dispatch(select(result));
+      if (result.cancelled) {
+        return;
       }
+      console.log(select(result));
+      dispatch(select(result));
     },
     dispatch
   };

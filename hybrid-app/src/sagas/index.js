@@ -38,7 +38,7 @@ function* postPhoto(action) {
     console.log(action.payload);
     const state = yield select(getPhoto);
     const formData = new FormData();
-    formData.append("myFile", state.selectedFiles[0], "filenamehere");
+    formData.append("myFile", state.selectedFiles, "filenamehere");
     try {
       const photo = yield call(Api.post, formData);
       yield put({ type: "photo/SUCCESS", entities: photo });

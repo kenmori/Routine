@@ -2,24 +2,12 @@
   "photos": [
     {
       "id": 1
-    },
-    {
-      "id": 2
-    },
-    {
-      "id": 3
-    },
-    {
-      "id": 4
-    },
-    {
-      "id": 5
     }
   ],
   "images": [
     {
       "id": 1,
-      "src": "https://data.ffaf.jpg",
+      "src": "https://kenjimorita.jp/wp-content/uploads/2018/07/IMG_5226.jpg",
       "title": "写真1",
       "alt": "写真1",
       "release_at": "2018/0714",
@@ -27,7 +15,7 @@
     },
     {
       "id": 2,
-      "src": "https://data.ffaf2.jpg",
+      "src": "https://kenjimorita.jp/wp-content/uploads/2018/07/9a0194d27e49a315bfca3fcfb5c2b174.png",
       "title": "写真2",
       "alt": "写真2",
       "release_at": "2018/0715",

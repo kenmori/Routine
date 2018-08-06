@@ -31,6 +31,8 @@ CreateReactApp(以下CRA)から作るかCreateReactNativeApp(以下CRNA)から�
 - 10.困ったこと解決したこと
 - 11.その他
 - 参照記事
+- 謝辞
+- author
 
 ## 0. 前提
 
@@ -849,4 +851,17 @@ expoで認証機能を作るとなるときついことがあるらしい。Fire
 - [ProjectLifecycle](https://docs.expo.io/versions/v28.0.0/introduction/project-lifecycle)
 
 - [開発手順](https://docs.expo.io/versions/v28.0.0/guides/up-and-running.html)
+
+
+## 謝辞
+
+これを公開するにあたり[株式会社 m-Lab](http://mlabs.jp/)さんに御礼申し上げます
+
+## author
+
+[Twitter](https://twitter.com/bukostunikki?lang=ja)
+
+[github](https://github.com/kenmori)
+
+[ブログ](https://kenjimorita.jp)
 

@@ -111,6 +111,8 @@ Andoriodエミュレータ。
 
 ## 1.フォルダ構成
 
+[納品先から許可をいただいたので徐々にgithub上にあげます](https://github.com/kenmori/Routine)
+
 ### 1-1 camera-with-native
 - カメラロールを実装したプロジェクト
 

@@ -1,6 +1,7 @@
 # 初めてReactNative for Webで実装してみて
 
 更新日時: 2018/7/25
+![ReactNative-for-web](https://kenjimorita.jp/wp-content/uploads/2018/08/37699ECD-106B-4D3F-BA3A-285721879EF2.jpeg)
 
 ## 対象
 - Reactは知っている
